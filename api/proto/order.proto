@@ -1,0 +1,49 @@
+syntax="proto3";
+
+package orderpb;
+
+option go_package = "github.com/looksaw2/gorder3/internal/common/genproto/orderpb";
+
+import "google/protobuf/empty.proto";
+
+
+service OrderService{
+    rpc CreateOrder(CreateOrderRequest) returns (google.protobuf.Empty);
+    rpc GetOrder(GetOrderRequest) returns (Order);
+    rpc UpdateOrder(Order) returns (google.protobuf.Empty);
+}
+
+//创建订单的请求
+message CreateOrderRequest {
+    //用户的ID
+    string CustomerID = 1;
+    repeated ItemWIthQuantity Item = 2;
+}
+//物品(带数量)
+message ItemWIthQuantity {
+    //物品的ID
+    string ID  = 1;
+    int32 Quantity = 2;
+}
+
+message GetOrderRequest {
+    string OrderID = 1;
+    string CustomerId = 2;
+}
+
+
+
+
+message Item {
+    string ID = 1;
+    string Name = 2;
+    int32 Quantity = 3;
+    string PriceID = 4;
+}
+
+message Order {
+    string ID = 1;
+    string CustomerID = 2;
+    string Status = 3;
+    repeated Item Items = 4;
+}

@@ -1,0 +1,9 @@
+go 1.25.4
+
+use (
+	./internal/common
+	./internal/kitchen
+	./internal/order
+	./internal/payment
+	./internal/stock
+)
