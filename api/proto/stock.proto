@@ -5,3 +5,28 @@ package stockpb;
 option go_package = "github.com/looksaw2/gorder3/internal/common/genproto/stockpb";
 
 import "google/protobuf/empty.proto";
+import "order.proto";
+
+service StockService{
+    rpc GetItems(GetItemsRequest) returns (GetItemsResponse);
+    rpc CheckIfItemInStock(CheckIfItemInStockRequest) returns (CheckIfItemInSTockResponse);
+}
+
+
+message GetItemsRequest{
+    repeated string ItemsID = 1;
+}
+
+
+message GetItemsResponse{
+    repeated orderpb.Item Items = 1;
+}
+
+message CheckIfItemInStockRequest {
+    repeated orderpb.ItemWIthQuantity Items = 1;
+}
+
+message CheckIfItemInSTockResponse {
+    int32 InStock = 1;
+    repeated orderpb.Item Items = 2;
+}

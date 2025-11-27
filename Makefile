@@ -17,8 +17,8 @@ run-local-stock:
 
 
 ### 生成代码的script
-.PHONY: generate-protoc
-generate-protoc:
+.PHONY: generate-protoc-order
+generate-protoc-order:
 	protoc \
 		--proto_path=./api/proto \
 		--go_out=./internal/common/genproto/orderpb \
@@ -26,6 +26,15 @@ generate-protoc:
 		--go-grpc_out=./internal/common/genproto/orderpb \
 		--go-grpc_opt=module=github.com/looksaw2/gorder3/internal/common/genproto/orderpb \
 		order.proto
+.PHONY: generate-protoc-stock
+generate-protoc-stock:
+	protoc \
+		--proto_path=./api/proto \
+		--go_out=./internal/common/genproto/stockpb \
+		--go_opt=module=github.com/looksaw2/gorder3/internal/common/genproto/stockpb \
+		--go-grpc_out=./internal/common/genproto/stockpb \
+		--go-grpc_opt=module=github.com/looksaw2/gorder3/internal/common/genproto/stockpb \
+		stock.proto
 
 .PHONY: generate-oapi
 generate-oapi:
