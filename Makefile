@@ -58,3 +58,5 @@ test-order-get:
 	curl -X GET localhost:8282/api/customer/1/orders/2
 test-order-post:
 	curl -X POST localhost:8282/api/customer/22/orders
+test-order-fake-id:
+	curl -X GET localhost:8282/api/customer/fake-customer-id/orders/fake-id
