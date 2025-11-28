@@ -1,0 +1,11 @@
+linters:
+  enable:
+    - interfacer       # 检查不必要的接口使用
+    - unused           # 检查未使用的变量/类型
+    - staticcheck      # 包含SA4006规则（检测*interface{}误用）
+    - typecheck        # 类型检查
+
+linters-settings:
+  staticcheck:
+    checks:
+      - "SA*"          # 启用所有SA规则（包含SA4006）
